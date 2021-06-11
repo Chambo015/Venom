@@ -29,6 +29,9 @@ body {
   list-style-type: none;
   display: flex;
 }
+.menu-close {
+  display: none;
+}
 .nav-menu-item {
   margin-right: 30px;
 }
@@ -90,50 +93,7 @@ body {
   display: none;
 }
 
-@media (max-width: 760px) {
-  .blood {
-    background: #14131A
-  }
-  .venom {
-    top: 15%;
-    position: fixed;
-  }
-}
-@media (max-width: 650px) {
-  .nav-menu {
-    display: none;
-  }
-  .nav {
-    margin-left: auto;
-  }
-  .button-menu {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    font-size: 14px;
-    line-height: 16px;
-    color: #FFFFFF;
-  }
-  .menu-button-text {
-    margin-right: 10px;
-  }
-  .hero {
-    text-align: center;
-  }
-  .button-group {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-  .button-link {
-    margin-top: 3%;
-  }
-}
+
 
 
 /*  about.html  */
@@ -186,11 +146,12 @@ body {
   font-size: 16px;
   line-height: 140%; /* устанавливает  межстрочный интервал , % берется высоты шрифта. */
   color: rgba(255, 255, 255, 0.8);
+  white-space: nowrap; /* Слова не переносятся */
 /*   line-height: 1.5; /*  устанавливает полуторный межстрочный интервал */ */
 }
 
 .content .trailer {
-  width: 356px;
+  max-width: 356px;
   height: 205px;
   background: url('../img/trailer.jpg') no-repeat center / contain;
   border-radius: 5px;
@@ -199,6 +160,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
 }
 .trailer .play {
   width: 45px;
@@ -218,7 +180,8 @@ body {
 }
 
 .poster {
-  width: 362px;
+  max-width: 362px;
+  width: 100%;
   border-radius: 5px;
   margin-right: 30px;
 }
@@ -231,3 +194,115 @@ body {
   margin-bottom: 20px;
 }
 
+
+/* Адаптив */
+@media (max-width: 1065px) {
+  .content {
+    flex-direction: column;
+  }
+  .col {
+    margin-bottom: 5%;
+  }
+  .about .header {
+    margin-bottom: 5%;
+  }
+}
+@media (max-width: 760px) {
+  .blood {
+    background: #14131A
+  }
+
+  .venom {
+    top: 15%;
+    position: fixed;
+
+  }
+}
+
+@media (max-width: 650px) {
+  .nav-menu {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 1s;
+  }
+  .nav-menu-link {
+    color: #14131A;
+    
+  }
+  .nav-menu-item {
+    margin: 5% 0;
+  }
+  .nav {
+    margin-left: auto;
+  }
+  .menu-close {
+    position: fixed;
+    right: 25px;
+    top: 65px;
+    display: flex;
+    align-items: center;
+    z-index: 11;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transform: translateX(200%);
+    transition: transform 1s;
+  }
+  .is-activ {
+    transform:translateX(0);
+  }
+  .button-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 16px;
+    color: #FFFFFF;
+  }
+  .menu-close-text, .menu-button-text {
+    margin-right: 10px;
+  }
+  .hero {
+    text-align: center;
+  }
+  .button-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .button-link {
+    margin-top: 3%;
+  }
+  .yers {
+    display: block;
+  }
+
+  /* about */
+  .poster {
+    margin-bottom: 5%;
+    margin-right: 0;
+  }
+  .poster-wrapper {
+    flex-direction: column;
+    padding-bottom: 5%;
+  }
+  .column-2 {
+    column-count: 1;
+  }
+}
